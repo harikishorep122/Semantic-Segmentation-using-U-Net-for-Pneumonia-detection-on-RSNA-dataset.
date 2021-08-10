@@ -1,5 +1,5 @@
-# UNET
- INTRODUCTION
+
+ #INTRODUCTION
 
 	Medical imaging and applications of Artificial intelligence for diagnosis has been one of the hot topics since the onset of deep learning. Quite a lot of datasets have come up in this field. 
 		This project is an attempt at using UNET architecture for diagnosing pneumonia in chest X-ray images. The  RSNA dataset from Kaggle has been used for training the model. This project taught me how to structure a deep learning project, follow the coding standards and more importantly gave insights into image segmentation.
