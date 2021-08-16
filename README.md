@@ -36,37 +36,41 @@ masks : (self.batch_size, self.img_height, self.img_width, 2)
 
 ##  METHOD
 
-### 3.1 Model build![unet]
+### 3.1 Model build
 
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/unet.png" height="300" align = "right">
 
-The model used is similar to a standard UNET architecture. The model involves an encoder path and a decoder path. The encoder consists of a stacks of convolutions and max pooling layers. This helps to capture the context of the image. The decoder path is symmetric to the encoder it consists of stacks of upsampling and convolution layers.
-
-(https://user-images.githubusercontent.com/67147822/129526977-ca09f40e-763b-4186-97a6-810866bc3a51.png )
+The model used is similar to a standard UNET architecture. The model involves an encoder path and a decoder path. The encoder consists of a stacks of convolutions and max pooling layers. This helps to capture the context of the image. 
+The decoder path is symmetric to the encoder it consists of stacks of upsampling and convolution layers.
+<br />
 
 ### Activation functions.
 
 Relu activation was used in the convolution layers. In the output layer  softmax function was used, this gives us the class label of the predicted class. 
-Loss function.
-Diceloss and MeanIoU were the loss functions used. Diceloss is calculated by :       
-  
+
+### Loss function.
+Diceloss and MeanIoU were the loss functions used.
+
+Diceloss is calculated by : 
+
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/diceloss.png" align = "center">
+ 
 MeanIoU is calculated by:
 		
-
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/Iou.jpg" align = "center" width="200">
 
 
 Where TP is the true positives (ie correct class predictions) FP is the false positives (class 0 getting predicted as 1), and FN is the false negatives  (class 1 getting predicted as 0).
 
 
-   Function for implementing dice loss :
+**Function for implementing dice loss :**
 
-
-
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/Loss function.jpg" align = "center">
 
 
 ## Training the model.
 
 The model was trained on google colab instance for 50 epochs, the callbacks used were checkpoint (to save the model at every epoch), earlystopping with min_delta = 0.0001 on validation accuracy.
-
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -76,19 +80,28 @@ The model was trained on google colab instance for 50 epochs, the callbacks used
 The model achieved a dice coefficient of 0.65 and Mean IoU 0.5 on the validation set.
 The above measures are about how good the model predicts the segmentation map. But however our intended purpose is to finally predict bounding boxes for pneumonia region. Since our dataset was one which had bounding boxes rather than a classification mask.
 On drawing bounding boxes for the predicted regions with pneumonia class and comparing with the ground truth we get the below results.
-Dice coefficient of 0.97 and Mean IoU of 0.95
+Dice coefficient of **0.97** and Mean IoU of **0.95**
 
 
 ### Learning curve :
 
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/learning curve.jpg" width="400" height="400"> |<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/Dice curve.jpg" width="400" height="400">
+------------ | -------------
 
+-------------------------------
 ### Some predicted x-rays.
 
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/R1.jpg" width="900">
+
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/R2.jpg" width="900">
+
+---------------------
 
 ### Results with bounding boxes:
 
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/R3.jpg" width="800">
 
-
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/R4.jpg" width="800">
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
