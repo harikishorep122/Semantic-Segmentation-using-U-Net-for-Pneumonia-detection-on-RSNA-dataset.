@@ -95,8 +95,10 @@ Dice coefficient of 0.97 and Mean IoU of 0.95
 
 ## CONCLUSION
 
-	This project was a great learning experience for me. I learned how to preprocess a dataset and also how to code a data generator function to feed data while training the model. 
+This project was a great learning experience for me. I learned how to preprocess a dataset and also how to code a data generator function to feed data while training the model. 
+
 By doing this project I could appreciate the working of U-Net architecture for image segmentation. I understood the encoder decoder batches in the network and how it works to first capture the context of the image and then predict the classes for each classes.
+
 Finally it was a great experience to code the whole workflow. I learned the standard coding methods for data preprocessing, building the network architecture, training the model with proper checkpoints such as callbacks and finally testing the model.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
