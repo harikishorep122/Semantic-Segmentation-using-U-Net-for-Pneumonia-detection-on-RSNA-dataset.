@@ -80,6 +80,9 @@ The model was trained on google colab instance for 50 epochs, the callbacks used
 The model achieved a dice coefficient of 0.65 and Mean IoU 0.5 on the validation set.
 The above measures are about how good the model predicts the segmentation map. But however our intended purpose is to finally predict bounding boxes for pneumonia region. Since our dataset was one which had bounding boxes rather than a classification mask.
 On drawing bounding boxes for the predicted regions with pneumonia class and comparing with the ground truth we get the below results.
+
+<img src="https://github.com/harikishorep122/UNET/blob/main/Final_results/Validation score.jpg" width="900">
+
 Dice coefficient of **0.97** and Mean IoU of **0.95**
 
 
