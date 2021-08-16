@@ -40,6 +40,8 @@ masks : (self.batch_size, self.img_height, self.img_width, 2)
 
 The model used is similar to a standard UNET architecture. The model involves an encoder path and a decoder path. The encoder consists of a stacks of convolutions and max pooling layers. This helps to capture the context of the image. The decoder path is symmetric to the encoder it consists of stacks of upsampling and convolution layers.
 
+![alt text](Final_results/unet.png "U-Net")
+
 ### Activation functions.
 
 Relu activation was used in the convolution layers. In the output layer  softmax function was used, this gives us the class label of the predicted class. 
