@@ -19,7 +19,7 @@ Considering the fact that even though the dataset was a region localization data
 
 The dataset was directly imported from Kaggle pneumonia detection challenge page onto a Google colab instance. It consisted of close to 30,000 images in .dcm format.  Train and validation sets were separately available with ~27,000 and ~4000 train and validation images. Images were of 1024x1024 resolution. A .csv file was also provided as train lables. The csv files consisted of bounding box coordinates of the pneumonia region in each image.
 
-###2.2 Data Generator class for efficient data flow.
+### 2.2 Data Generator class for efficient data flow.
 
 The primary step of the data generator class was to convert the files from .dcm format to .jpg followed by resizing the image to 256 x 256 pixels. Along with the image a mask image was also prepared using the bounding box coordinates from the .csv file.
 The mask image was of binary type with 1 as value inside the bounding box and 0 outside it. The mask rectangle was first drawn on 1024x1024x1 numpy array and then resized to 256x256. Finally using the to_categorical() it was converted to one hot encodings.  Binary value 1 represents pneumonia affected regions and 0 represents normal regions.
@@ -36,11 +36,12 @@ masks : (self.batch_size, self.img_height, self.img_width, 2)
 
 ##  METHOD
 
-### 3.1 Model build
+### 3.1 Model build![unet]
+
 
 The model used is similar to a standard UNET architecture. The model involves an encoder path and a decoder path. The encoder consists of a stacks of convolutions and max pooling layers. This helps to capture the context of the image. The decoder path is symmetric to the encoder it consists of stacks of upsampling and convolution layers.
 
-![alt text](Final_results/unet.png "U-Net")
+(https://user-images.githubusercontent.com/67147822/129526977-ca09f40e-763b-4186-97a6-810866bc3a51.png )
 
 ### Activation functions.
 
@@ -62,26 +63,9 @@ Where TP is the true positives (ie correct class predictions) FP is the false po
 
 
 
-
-
-
-
-##Training the model.
+## Training the model.
 
 The model was trained on google colab instance for 50 epochs, the callbacks used were checkpoint (to save the model at every epoch), earlystopping with min_delta = 0.0001 on validation accuracy.
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -95,36 +79,13 @@ On drawing bounding boxes for the predicted regions with pneumonia class and com
 Dice coefficient of 0.97 and Mean IoU of 0.95
 
 
-Learning curve :
+### Learning curve :
 
 
+### Some predicted x-rays.
 
 
-
-
-
-
-Some predicted x-rays.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     Results with bounding boxes:
-
-
+### Results with bounding boxes:
 
 
 
@@ -137,20 +98,6 @@ Some predicted x-rays.
 	This project was a great learning experience for me. I learned how to preprocess a dataset and also how to code a data generator function to feed data while training the model. 
 By doing this project I could appreciate the working of U-Net architecture for image segmentation. I understood the encoder decoder batches in the network and how it works to first capture the context of the image and then predict the classes for each classes.
 Finally it was a great experience to code the whole workflow. I learned the standard coding methods for data preprocessing, building the network architecture, training the model with proper checkpoints such as callbacks and finally testing the model.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
